@@ -22,5 +22,32 @@ var Package = {
     } else {
       return 100;
     }
+  },
+
+  calculateBySpeed: function() {
+    if (this.speed === 2) {
+      return 10;
+    } else if (this.speed === 1) {
+      return 25;
+    } else {
+      return 0;
+    }
   }
 };
+
+$(document).ready(function() {
+  $("form#package-things").submit(function(event) {
+    event.preventDefault();
+    var inputtedWeight = parseInt($("input#new-weight").val());
+    var inputtedDistance = parseInt($("input#new-distance").val());
+    var inputtedSpeed = parseInt($("input#new-speed").val());
+    var newPackage = Object.create(Package);
+    newPackage.weight = inputtedWeight;
+    newPackage.distance = inputtedDistance;
+    newPackage.speed = inputtedSpeed;
+    console.log(inputtedWeight);
+    console.log(inputtedDistance);
+    console.log(inputtedSpeed);
+    $("#result").text((newPackage.calculateByWeight()) + (newPackage.calculateByDistance()) + (newPackage.calculateBySpeed()));
+  });
+});

@@ -43,4 +43,16 @@ describe("Package", function() {
       testPackage.calculateByDistance().should.equal(100);
     });
   });
+  describe("caculateBySpeed", function() {
+    it('returns $10 extra to ship a package expedited', function() {
+      var testPackage = Object.create(Package);
+      testPackage.speed = 2;
+      testPackage.calculateBySpeed().should.equal(10);
+    });
+    it('returns $25 extra to ship a package one day', function() {
+      var testPackage = Object.create(Package);
+      testPackage.speed = 1;
+      testPackage.calculateBySpeed().should.equal(25);
+    });
+  });
 });
