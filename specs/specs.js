@@ -21,4 +21,26 @@ describe("Package", function() {
       testPackage.calculateByWeight().should.equal(2);
     });
   });
+  describe("calculateByDistance", function() {
+    it("returns $5 to ship a package less than 20 miles", function() {
+      var testPackage = Object.create(Package);
+      testPackage.distance = 19;
+      testPackage.calculateByDistance().should.equal(5);
+    });
+    it("returns $20 to ship a package between 20 and 100 miles", function() {
+      var testPackage = Object.create(Package);
+      testPackage.distance = 30;
+      testPackage.calculateByDistance().should.equal(20);
+    });
+    it("returns $50 to ship a package between 100 and 500 miles", function() {
+      var testPackage = Object.create(Package);
+      testPackage.distance = 105;
+      testPackage.calculateByDistance().should.equal(50);
+    });
+    it("returns $100 to a ship a package over 500 miles", function() {
+      var testPackage = Object.create(Package);
+      testPackage.distance = 575;
+      testPackage.calculateByDistance().should.equal(100);
+    });
+  });
 });
